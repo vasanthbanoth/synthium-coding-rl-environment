@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "releasectl"
+version = "0.1.0"
+description = "Release gate for model eval builds"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+releasectl = "releasectl.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["releasectl*"]

@@ -1,0 +1,7 @@
+{
+  "tests": [
+    {"name": "healthz", "passed": true},
+    {"name": "tool_call_roundtrip", "passed": false},
+    {"name": "schema_valid", "passed": true}
+  ]
+}

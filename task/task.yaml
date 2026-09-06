@@ -1,0 +1,22 @@
+name: releasectl-release-gate
+slug: releasectl-release-gate
+difficulty: medium
+category: devops_release_gating
+language: python
+timeout_minutes: 45
+
+capability_under_test:
+  - repository-level debugging across multiple modules
+  - CI / release-policy reasoning
+  - fixing incorrect boolean / comparison logic without being handed the patch
+
+agent_workspace: /repo
+grader_command: pytest -q /tests/test_verifier.py
+
+success_criteria:
+  - all verifier tests pass
+  - starting tree fails verifier; reference solution passes
+
+notes:
+  - do not require a specific reason string wording beyond the substrings the tests assert
+  - alternative valid implementations are fine if behavior matches policy in instruction.md

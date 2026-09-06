@@ -1,0 +1,8 @@
+{
+  "accuracy": 0.92,
+  "latency_p95_ms": 170,
+  "min_accuracy": 0.85,
+  "max_latency_p95_ms": 250,
+  "baseline_accuracy": 0.90,
+  "baseline_latency_p95_ms": 175
+}

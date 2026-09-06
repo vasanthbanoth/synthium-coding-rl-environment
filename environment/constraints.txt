@@ -1,0 +1,2 @@
+# Pin versions used when building the environment image / running the verifier.
+pytest==8.3.5
