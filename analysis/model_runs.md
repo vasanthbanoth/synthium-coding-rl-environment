@@ -4,10 +4,10 @@
 
 | | |
 |---|---|
-| agent | Cursor `generalPurpose` subagent ([releasectl fix run](7a6a2718-9e71-4b9e-bff5-7c8c1f2e41a7)) |
+| agent | Cursor generalPurpose subagent ([release gate fix run](7a6a2718-9e71-4b9e-bff5-7c8c1f2e41a7)) |
 | date | 2026-09-06 |
-| workspace | Fresh copy of `environment/repo` only (no `solution/`, tests not edited) |
-| prompt | `task/instruction.md` policy + “fix releasectl until verifier passes” |
+| workspace | Fresh copy of environment/repo only (no solution/ tests not edited) |
+| prompt | task/instruction.md policy plus fix the release gate until verifier passes |
 | result | **PASS** — `15 passed, 1 skipped` |
 
 ### Approach
@@ -17,10 +17,10 @@
 4. Patched and re-ran `tests/test_verifier.py`
 
 ### Files touched
-- `releasectl/versioning.py` — numeric semver compare (`1.10.0` > `1.9.0`)
-- `releasectl/metrics.py` — accuracy drop + latency rise vs baseline
-- `releasectl/smoke.py` — non-empty suite, all tests must pass
-- `releasectl/decide.py` — stop skipping smoke when metrics look fine
+- `release_gate/versioning.py` — numeric semver compare (`1.10.0` > `1.9.0`)
+- `release_gate/metrics.py` — accuracy drop + latency rise vs baseline
+- `release_gate/smoke.py` — non-empty suite, all tests must pass
+- `release_gate/decide.py` — stop skipping smoke when metrics look fine
 
 ### Succeeded
 Full grader green after the four fixes. Fixtures behaved as expected (`good_release` SHIP; bad smoke cases BLOCK).

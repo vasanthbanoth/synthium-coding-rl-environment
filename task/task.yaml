@@ -1,5 +1,5 @@
-name: releasectl-release-gate
-slug: releasectl-release-gate
+name: release-gate
+slug: release-gate
 difficulty: medium
 category: devops_release_gating
 language: python

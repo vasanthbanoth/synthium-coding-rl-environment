@@ -4,7 +4,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-IMAGE="releasectl-env:local"
+IMAGE="release-gate-env:local"
 
 echo "== building image =="
 docker build -t "$IMAGE" "$ROOT/environment"
@@ -26,9 +26,9 @@ echo "ok: starting tree failed (exit $code_broken)"
 echo "== reference solution should PASS =="
 docker run --rm \
   -v "$ROOT/tests:/tests:ro" \
-  -v "$ROOT/solution/releasectl:/solution:ro" \
+  -v "$ROOT/solution/release_gate:/solution:ro" \
   "$IMAGE" \
-  bash -lc 'cp /solution/*.py /repo/releasectl/ && pip install -q -e /repo && pytest -q /tests/test_verifier.py'
+  bash -lc 'cp /solution/*.py /repo/release_gate/ && pip install -q -e /repo && pytest -q /tests/test_verifier.py'
 
 echo "ok: reference solution passed"
 echo "all good."

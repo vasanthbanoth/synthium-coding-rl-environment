@@ -4,11 +4,11 @@ import argparse
 import json
 import sys
 
-from releasectl.decide import decide_from_bundle
+from release_gate.decide import decide_from_bundle
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="releasectl")
+    parser = argparse.ArgumentParser(prog="release-gate")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     decide_p = sub.add_parser("decide", help="ship/block a release bundle")

@@ -3,16 +3,16 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "releasectl"
+name = "release_gate"
 version = "0.1.0"
-description = "Release gate for model eval builds"
+description = "CI helper to ship or block model builds"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-releasectl = "releasectl.cli:main"
+"release-gate" = "release_gate.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["releasectl*"]
+include = ["release_gate*"]

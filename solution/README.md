@@ -1,12 +1,11 @@
 # Reference solution
 #
-# Copy these files over environment/repo/releasectl/ (same filenames).
-# Or from repo root:
+# Copy these files over environment/repo/release_gate/ (same filenames).
 #
-#   cp -R ../../solution/releasectl/*.py releasectl/
+#   cp ../../solution/release_gate/*.py release_gate/
 #
-# Fixed bugs:
-# 1. versioning.is_newer — real semver tuple compare (1.10.0 > 1.9.0)
-# 2. metrics.check_metrics — accuracy drop / latency rise vs baseline
-# 3. smoke.check_smoke — require non-empty suite + every test passed
-# 4. decide.decide_from_parts — always run metrics AND smoke (no short-circuit)
+# Fixed bugs
+# 1. versioning.is_newer uses real semver tuple compare (1.10.0 > 1.9.0)
+# 2. metrics.check_metrics blocks accuracy drop and latency rise vs baseline
+# 3. smoke.check_smoke requires non-empty suite and every test passed
+# 4. decide.decide_from_parts always runs metrics and smoke (no short-circuit)

@@ -1,15 +1,15 @@
-# releasectl
+# release-gate
 
-CI helper: look at a release bundle and say SHIP or BLOCK.
+CI helper. Look at a release bundle and say SHIP or BLOCK.
 
 ```bash
 pip install -e .
-releasectl decide --bundle fixtures/good_release
-releasectl decide --bundle fixtures/bad_smoke --json
-releasectl decide --bundle fixtures/metrics_ok_smoke_bad --json
+release-gate decide --bundle fixtures/good_release
+release-gate decide --bundle fixtures/bad_smoke --json
+release-gate decide --bundle fixtures/metrics_ok_smoke_bad --json
 ```
 
-Bundle layout:
+Bundle layout
 
 ```
 bundle/
@@ -18,4 +18,4 @@ bundle/
   smoke_results.json
 ```
 
-This tree is the broken starting state for the assignment. Don't "fix" the fixtures to green — fix the code.
+This tree is the broken starting state for the assignment. Fix the code. Do not patch the fixtures to look green.

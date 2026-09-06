@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from releasectl.io_util import BundleError, load_bundle
-from releasectl.metrics import check_metrics
-from releasectl.smoke import check_smoke
-from releasectl.types import Decision
-from releasectl.versioning import is_newer, parse_semver
+from release_gate.io_util import BundleError, load_bundle
+from release_gate.metrics import check_metrics
+from release_gate.smoke import check_smoke
+from release_gate.types import Decision
+from release_gate.versioning import is_newer, parse_semver
 
 
 def decide_from_bundle(bundle_dir: str | Path) -> Decision:
@@ -29,7 +29,7 @@ def decide_from_parts(
     eval_report: dict,
     smoke_results: dict,
 ) -> Decision:
-    """Core gate used by CI."""
+    """Core gate used by CI. Version, metrics, and smoke all must clear."""
     reasons: list[str] = []
 
     model_id = manifest.get("model_id")
@@ -58,13 +58,6 @@ def decide_from_parts(
         except ValueError as exc:
             reasons.append(str(exc))
 
-    metric_reasons = check_metrics(eval_report)
-    reasons.extend(metric_reasons)
-
-    # metrics are the expensive signal; if they clear, ship without waiting on
-    # the noisier checks (smoke flakes / version glue)
-    if not metric_reasons:
-        return Decision(ship=len(reasons) == 0, reasons=reasons)
-
+    reasons.extend(check_metrics(eval_report))
     reasons.extend(check_smoke(smoke_results))
     return Decision(ship=len(reasons) == 0, reasons=reasons)

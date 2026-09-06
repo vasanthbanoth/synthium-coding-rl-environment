@@ -1,8 +1,8 @@
 """
-Behavioral verifier for releasectl.
+Behavioral verifier for release_gate.
 
 These tests grade outcomes, not a specific implementation shape.
-They import the installed `releasectl` package from the environment repo.
+They import the installed `release_gate` package from the environment repo.
 """
 
 from __future__ import annotations
@@ -12,8 +12,8 @@ from pathlib import Path
 
 import pytest
 
-from releasectl.decide import decide_from_bundle, decide_from_parts
-from releasectl.versioning import is_newer
+from release_gate.decide import decide_from_bundle, decide_from_parts
+from release_gate.versioning import is_newer
 
 
 def _write_bundle(tmp_path: Path, *, manifest, eval_report, smoke) -> Path:
